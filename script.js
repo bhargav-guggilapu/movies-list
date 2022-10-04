@@ -10,18 +10,19 @@ getMovies(API_URL);
 async function getMovies(url) {
   const response = await fetch(url);
   const data = await response.json();
-  showMovies(data.results);
-}
 
-function showMovies(movies) {
-  movies.forEach((movie) => {
-    const { title, poster_path, vote_average, overview } = movie;
+  data.results.forEach((movie) => {
+    const { title, poster_path, vote_average, overview, original_language } =
+      movie;
     const code = `
-    <div style="width: 250px; margin-right: 20px; margin-bottom: 35px">
-        <img class="image" src="${IMAGE_URL + poster_path}" />
-        <div class="card-footer">
-            <h3 style="font-size: 15px">${title.toUpperCase()}</h3>
-            <span class="rating">${vote_average.toFixed(1)}</span>
+    <div class="card">
+        <div style="position: relative">
+          <img style="width: 100%;" src="${IMAGE_URL + poster_path}" />
+          <div class="card-footer">
+              <h3 style="font-size: 15px">${title.toUpperCase()}</h3>
+              <span class="rating">${vote_average.toFixed(1)}</span>
+          </div>
+          <span class="language">${original_language.toUpperCase()}</span>
         </div>
     </div>`;
 
@@ -29,5 +30,4 @@ function showMovies(movies) {
   });
 }
 
-
-//release_date: "2022-07-27", original_language:"en", overview
+//release_date: "2022-07-27", overview

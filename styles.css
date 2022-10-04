@@ -18,15 +18,22 @@
 
 .content {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
-  padding-left: 100px;
   overflow-y: scroll;
   max-height: 85%;
+  width: 95%;
 }
 
-.image {
-  width: 100%;
+.card {
+  width: 250px;
+  margin: 25px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.1);
 }
 
 .card-footer {
@@ -45,4 +52,14 @@
   color: black;
   font-size: 12px;
   border-radius: 5px;
+}
+
+.language {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  padding: 5px;
+  font-size: 12px;
 }
