@@ -12,6 +12,7 @@
   background-position: center bottom;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -25,10 +26,14 @@
   width: 95%;
 }
 
+.content::-webkit-scrollbar {
+  display: none;
+}
+
 .card {
   width: 250px;
   margin: 25px;
-  transition: all 0.3s;
+  transition: transform 0.3s;
   cursor: pointer;
 }
 
@@ -40,7 +45,7 @@
   display: flex;
   justify-content: space-between;
   background-color: rgba(255, 0, 0, 0.756);
-  margin-top: -4px;
+  margin-top: -3px;
   padding: 20px 10px;
   color: white;
   align-items: center;
@@ -62,4 +67,24 @@
   color: rgb(255, 255, 255);
   padding: 5px;
   font-size: 12px;
+}
+
+.release-date {
+  transition: all 0.1;
+  background-color: white;
+  opacity: 0.9;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 15px;
+  font-size: 18px;
+  transform: translateY(101%);
+  transition: all 0.3s;
+  font-weight: bold;
+}
+
+.card:hover .release-date {
+  transform: translateY(0);
 }
