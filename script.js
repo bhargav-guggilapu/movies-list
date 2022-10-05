@@ -1,19 +1,21 @@
-const currentYear = new Date().getFullYear();
-const startDate = `${currentYear}-01-01`;
-const endDate = `${currentYear}-12-31`;
-const API_KEY = "&api_key=d54294949aa5059e9f467e7dcab4ffe6";
-const YEAR_MOVIES_URL = `/discover/movie?primary_release_date.gte=${startDate}&primary_release_date.lte=${endDate}`;
 const API_URL = "https://api.themoviedb.org/3";
+const API_KEY = "&api_key=d54294949aa5059e9f467e7dcab4ffe6";
 const IMAGE_URL = `https://image.tmdb.org/t/p/w500`;
 
 const moviesDiv = document.querySelector(".content");
+const yearsEle = document.getElementById("years");
 
-getMovies(API_URL + YEAR_MOVIES_URL + API_KEY);
+getMovies(new Date().getFullYear());
 
-async function getMovies(url) {
-  const response = await fetch(url);
+async function getMovies(year) {
+  const YEAR_MOVIES_URL = `/discover/movie?primary_release_date.gte=${year}-01-01&primary_release_date.lte=${year}-12-31`;
+
+  moviesDiv.innerHTML = "";
+
+  const response = await fetch(API_URL + YEAR_MOVIES_URL + API_KEY);
   const data = await response.json();
   const movies = data.results;
+
   movies.sort(function (a, b) {
     return new Date(b.release_date) - new Date(a.release_date);
   });
@@ -44,3 +46,18 @@ async function getMovies(url) {
     moviesDiv.innerHTML += code;
   });
 }
+
+yearsEle.addEventListener("change", function () {
+  getMovies(this.value);
+});
+
+window.onload = function () {
+  const currentYear = new Date().getFullYear();
+
+  for (var i = currentYear; i >= 2000; i--) {
+    var option = document.createElement("OPTION");
+    option.innerHTML = i;
+    option.value = i;
+    yearsEle.appendChild(option);
+  }
+};
