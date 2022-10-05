@@ -32,6 +32,7 @@ async function getMovies(year) {
     <div class="card">
         <div style="position: relative">
           <div style="position: relative; overflow: hidden">
+            <span class="trailer"><a class="trailer-link" target=”_blank” href="https://www.youtube.com/results?search_query=${title}+trailer">Watch Trailer</a></span>
             <img style="width: 100%;" src="${IMAGE_URL + poster_path}" />
             <span class="release-date">${release_date}</span>
           </div>

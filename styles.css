@@ -34,7 +34,6 @@
   width: 250px;
   margin: 25px;
   transition: transform 0.3s;
-  cursor: pointer;
 }
 
 .card:hover {
@@ -69,22 +68,49 @@
   font-size: 12px;
 }
 
-.release-date {
+.release-date,
+.trailer {
   transition: all 0.1;
   background-color: white;
   opacity: 0.9;
   position: absolute;
-  bottom: 0;
   left: 0;
   right: 0;
   text-align: center;
   padding: 15px;
   font-size: 18px;
-  transform: translateY(101%);
-  transition: all 0.3s;
+  transition: transform 0.3s;
   font-weight: bold;
+}
+
+.release-date {
+  bottom: 0;
+  transform: translateY(101%);
 }
 
 .card:hover .release-date {
   transform: translateY(0);
+}
+
+.trailer {
+  top: 0;
+  transform: translateY(-101%);
+  z-index: 1;
+}
+
+.card:hover .trailer {
+  transform: translateY(0);
+}
+
+.trailer-link {
+  background-color: red;
+  text-decoration: none;
+  color: white;
+  padding: 5px;
+  font-size: 15px;
+  transition: padding 0.3s;
+}
+
+.trailer-link:hover {
+  padding: 10px;
 }
